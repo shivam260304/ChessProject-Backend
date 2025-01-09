@@ -21,6 +21,32 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+io.on('connection', (uniquesocket) => {
+    console.log('server socket connected');
+
+    if(!players.white){
+        players.white = uniquesocket.id;
+        uniquesocket.emit("playerRole", "W");
+    }
+    else if (!players.black){
+        players.black = uniquesocket.id;
+        uniquesocket.emit("playerRole", "B");
+    }
+    else{
+        uniquesocket.emit("spectatorRole")
+    }
+
+    uniquesocket.on('disconnect', ()=>{
+        if(uniquesocket.id === players.white){
+            delete players.white;
+        }
+        else if (uniquesocket.id === players.black){
+            delete players.black;
+        }
+    })
+})
+
+
 server.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
