@@ -16,3 +16,5 @@ learning_experience:
         reason: "This is not suitable for fast games with many moves, as it can become cumbersome."
       - description: "Instead, I used chess.fen()"
         reason: "It returns the board state in a compact format, which is more efficient for fast-paced games."
+
+  - topic: "Crested a nodemon.json fiel to track the .html and .ejs files along with .js files"
