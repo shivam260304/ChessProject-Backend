@@ -1,0 +1,18 @@
+learning_experience:
+  - topic: "Installed 'chess.js' for chess logics"
+    details: "I learned how to use 'chess.js' to handle chess game logic, including move validation and game state management."
+
+  - topic: "Better understanding of socket.io"
+    details: "I gained a better understanding of how Socket.IO works for real-time communication between the server and clients, allowing the exchange of moves and board state."
+
+  - topic: "chess.move() function"
+    details: 
+      description: "chess.move() returns an array that provides details of the position and the exact move made."
+      usage: "I learned how to use this function to capture and handle player moves in the game."
+
+  - topic: "Updating the board state"
+    details: 
+      - description: "The chess.board() method returns a 2D array representing the board state."
+        reason: "This is not suitable for fast games with many moves, as it can become cumbersome."
+      - description: "Instead, I used chess.fen()"
+        reason: "It returns the board state in a compact format, which is more efficient for fast-paced games."
