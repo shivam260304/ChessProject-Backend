@@ -12,7 +12,7 @@ const io = socket(server);
 const chess = new Chess(); 
 
 let players = {};
-let currentPlayer = 'W';
+let currentPlayer = 'w';
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public'))); 
@@ -26,11 +26,11 @@ io.on('connection', (uniquesocket) => {
 
     if(!players.white){
         players.white = uniquesocket.id;
-        uniquesocket.emit("playerRole", "W");
+        uniquesocket.emit("playerRole", "w");
     }
     else if (!players.black){
         players.black = uniquesocket.id;
-        uniquesocket.emit("playerRole", "B");
+        uniquesocket.emit("playerRole", "b");
     }
     else{
         uniquesocket.emit("spectatorRole")
@@ -52,8 +52,8 @@ io.on('connection', (uniquesocket) => {
             const result = chess.move(move);
             if(result){
                 currentPlayer = chess.turn();  //updates current player to next player
-                io.emit('move', move);
-                io.emit('boardState', chess.fen());
+                io.emit('move', move); // Handle this is frontend
+                io.emit('boardState', chess.fen()); // Handle this in frontend
             }
             else{
                 console.log('Invalid move : ', move);
